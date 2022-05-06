@@ -9,6 +9,7 @@ import os
 from flask import Flask
 from app.simple_pages import simple_pages
 from app.auth import auth
+from app.context_processors import utility_text_processors
 from app.db.models import User
 from app.db import db
 from app.cli import create_database
@@ -24,6 +25,7 @@ def create_app():
     bootstrap = Bootstrap5(app)
     app.register_blueprint(simple_pages)
     app.register_blueprint(auth)
+    # app.context_processor(utility_text_processors())
     app.register_error_handler(404, page_not_found)
     db_dir = "database/db.sqlite"
     app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///" + os.path.abspath(db_dir)
