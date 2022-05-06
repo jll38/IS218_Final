@@ -1,5 +1,4 @@
-import app
-client = app
+import pytest
 def test_homepage(client):
     """index page test"""
     response = client.get("/")

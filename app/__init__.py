@@ -4,7 +4,6 @@ import flask_login
 from flask import Flask, render_template
 from flask_bootstrap import Bootstrap5
 from flask_wtf.csrf import CSRFProtect
-
 import os
 from flask import Flask
 from app.simple_pages import simple_pages
