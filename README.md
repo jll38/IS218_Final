@@ -13,6 +13,10 @@
 1. Homepage Test
 2. Register Page Test
 3. Login Page Test
+4. Calculator Instance
+5. Calculator Add
+6. Calculator Subtract
+7. Calculator Result
 
 #### To-do
 1. Register and Login functionality

@@ -12,3 +12,7 @@ def test_calc_add():
 def test_calc_sub():
     calc = calculator()
     assert calc.subtract(1) == -1
+
+def test_calc_result():
+    calc = calculator()
+    assert calc.getResult() == 0
