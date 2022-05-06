@@ -13,6 +13,7 @@ from app.db.models import User
 from app.db import db
 from app.cli import create_database
 
+login_manager = flask_login.LoginManager()
 
 def page_not_found(e):
     return render_template("404.html"), 404
@@ -35,3 +36,10 @@ def create_app():
 
 
     return app
+
+@login_manager.user_loader
+def user_loader(user_id):
+    try:
+        return User.query.get(int(user_id))
+    except:
+        return None
