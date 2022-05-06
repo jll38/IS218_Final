@@ -1,4 +1,5 @@
-
+import app
+client = app
 def test_homepage(client):
     """index page test"""
     response = client.get("/")
