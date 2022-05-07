@@ -7,7 +7,7 @@ def test_calc_instance():
 
 def test_calc_add():
     calc = calculator()
-    assert calc.add(1) == 0
+    assert calc.add(1) == 1
 
 def test_calc_sub():
     calc = calculator()
