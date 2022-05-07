@@ -17,7 +17,7 @@
 5. Calculator Add
 6. Calculator Subtract
 7. Calculator Result
-8. 
+8. Log File
 
 #### To-do
 1. Register and Login functionality
