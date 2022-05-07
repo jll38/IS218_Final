@@ -30,8 +30,26 @@ def login():
 
 @auth.route('/register', methods=['POST', 'GET'])
 def register():
+    if current_user.is_authenticated:
+        return redirect(url_for('auth.dashboard'))
     form = register_form()
+    if form.validate_on_submit():
+        user = User.query.filter_by(email=form.email.data).first()
+        if user is None:
+            user = User(email=form.email.data, password=generate_password_hash(form.password.data))
+            db.session.add(user)
+            db.session.commit()
+            if user.id == 1:
+                user.is_admin = 1
+                db.session.add(user)
+                db.session.commit()
+            flash('You are now a registered user!', "success")
+            return redirect(url_for('auth.login'), 302)
+        else:
+            flash('Already Registered')
+            return redirect(url_for('auth.login'), 302)
     return render_template('register.html', form=form)
+
 @auth.route('/dashboard')
 def dashboard():
     if not current_user.is_authenticated():
