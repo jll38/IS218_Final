@@ -10,14 +10,17 @@
 * [Developmental Deployment](https://jll38-IS218-final-dev.herokuapp.com/)
 
 #### Unit Tests
-1. Homepage Test
-2. Register Page Test
-3. Login Page Test
-4. Calculator Instance
-5. Calculator Add
-6. Calculator Subtract
-7. Calculator Result
-8. Log File
+1. Main Menu Link Test
+2. Homepage Test
+3. Register Page Test
+4. Login Page Test
+5. Calculator Instance
+6. Calculator Add
+7. Calculator Subtract
+8. Calculator Result
+9. Log File
+10. Context Environment Test
+11. 
 
 #### To-do
 1. Register and Login functionality
