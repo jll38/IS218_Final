@@ -13,8 +13,6 @@ def test_request_main_menu_links(client):
 
 def test_dashboard_deny(client):
     """test dashboard access when not logged in"""
-    if (User.is_authenticated()):
-        logout_user()
     response = client.get("/")
     assert response.status_code == 302
 
