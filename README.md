@@ -23,5 +23,5 @@
 11. Test Page Not Found (404 Error)
 
 #### To-do
-1. Register and Login functionality
+1. Login functionality
 2. CSV Upload
