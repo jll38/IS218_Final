@@ -3,6 +3,7 @@ from app.db.models import User
 from app.auth.forms import register_form
 from app.auth import register
 from flask_login import logout_user, login_user
+from flask import current_app
 
 """This test the homepage"""
 
@@ -20,11 +21,13 @@ def test_dashboard_deny(client):
 
 def test_dashboard_accept(client):
     """test dashboard access when logged in"""
-    user = User.query.first()
-    user.authenticated = True
-    db.session.add(user)
-    db.session.commit()
-    login_user(user)
-    response = client.get('/dashboard')
-    assert response == 200
+    app = current_app
+    with app.app_context():
+        user = User.query.first()
+        user.authenticated = True
+        db.session.add(user)
+        db.session.commit()
+        login_user(user)
+        response = client.get('/dashboard')
+        assert response == 200
 
