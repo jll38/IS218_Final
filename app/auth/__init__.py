@@ -53,7 +53,7 @@ def register():
 
 @auth.route('/dashboard')
 def dashboard():
-    if not current_user.is_authenticated():
+    if not current_user.is_authenticated:
         return redirect(url_for('auth.login'))
 
 @auth.route("/logout")
