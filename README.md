@@ -21,6 +21,9 @@
 9. Log File
 10. Context Environment Test
 11. Test Page Not Found (404 Error)
+12. Dashboard Deny
+13. Dashboard Accept (In Progress)
+14. Register (In Progress)
 
 #### To-do
 1. Login functionality
