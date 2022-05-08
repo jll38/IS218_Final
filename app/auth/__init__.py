@@ -55,6 +55,7 @@ def register():
 def dashboard():
     if not current_user.is_authenticated:
         return redirect(url_for('auth.login'))
+    return render_template('dashboard.html')
 
 @auth.route("/logout")
 @login_required
