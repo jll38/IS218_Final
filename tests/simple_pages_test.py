@@ -18,4 +18,4 @@ def test_login_page(client):
 def test_page_not_found(client):
     """test 404 page not found"""
     response = client.get("/page0")
-    assert response.status_code == 400
+    assert response.status_code == 404
