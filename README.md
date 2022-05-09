@@ -28,5 +28,5 @@
 16. Register (In Progress)
 
 #### To-do
-1. Login functionality
+1. Registration and Login Tests
 2. CSV Upload
