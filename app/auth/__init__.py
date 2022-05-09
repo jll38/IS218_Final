@@ -34,8 +34,6 @@ def login():
 
 @auth.route('/register', methods=['POST', 'GET'])
 def register():
-    log3 = logging.getLogger("Request")
-    log3.info("Request: Register")
     if current_user.is_authenticated:
         return redirect(url_for('auth.dashboard'))
     form = register_form()

@@ -102,7 +102,7 @@ def create_app():
 
 
         now = time.time()
-        duration = round(now - g.start, 2)
+        # duration = round(now - g.start, 2)
         dt = datetime.datetime.fromtimestamp(now)
         timestamp = rfc3339(dt, utc=True)
 
@@ -114,7 +114,7 @@ def create_app():
             ('method', request.method),
             ('path', request.path),
             ('status', response.status_code),
-            ('duration', duration),
+            # ('duration', duration),
             ('time', timestamp),
             ('ip', ip),
             ('host', host),
