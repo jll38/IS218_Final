@@ -5,7 +5,7 @@ import pytest
 from app import db, create_app
 from app.db.models import User
 from app.auth.forms import register_form
-import app.auth
+from app.auth import register
 from flask_login import logout_user, login_user
 """This test the homepage"""
 

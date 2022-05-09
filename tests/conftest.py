@@ -14,6 +14,22 @@ def application():
     })
     yield application
 
+class authMethods:
+    def __init__(self, client):
+        self._client = client
+
+    def register(self, email="test@email.com", password="Password"):
+        return self._client.post("/register", data={"email": email, "password": password, "confirm": password})
+
+    def login(self, email="test@email.com", password="Password"):
+        return self._client.post("/login", data={"email": email, "password": password})
+
+    def logout(self):
+        return self._client.get("/logout")
+
+@pytest.fixture
+def auth(client):
+    return authMethods(client)
 
 @pytest.fixture()
 def client(application):
