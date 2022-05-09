@@ -15,7 +15,7 @@ def init_db():
 @database.before_app_first_request
 def create_db_file():
     root = config.Config.BASE_DIR
-    dbDirectory = os.path.join(root,'..',config.Config.DB_DIR)
+    dbDirectory = os.path.join(root,config.Config.DB_DIR)
     if not os.path.exists(dbDirectory):
         os.mkdir(dbDirectory)
     db.create_all()
