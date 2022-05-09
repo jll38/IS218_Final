@@ -5,6 +5,6 @@
     <div id="row">
     <h2>Dashboard</h2>
     <p>Welcome: {{ current_user.email }}</p>
-    <button><a class="dropdown-item" href="{{ url_for("transactions.transactions") }}">Manage Profile</a></button>
+    <button><a href="{{ url_for("transactions.transaction") }}">Transactions</a></button>
     </div>
 {% endblock %}
