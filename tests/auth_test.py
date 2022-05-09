@@ -25,7 +25,9 @@ def test_dashboard_accept(client):
     """test dashboard access when logged in"""
     app = Flask(__name__)
     with app.app_context():
-        user = User.query.first()
+        user = User
+        user.email = 'johncena@gmail.com'
+        user.password = 'Password'
         user.authenticated = True
         db.session.add(user)
         db.session.commit()
