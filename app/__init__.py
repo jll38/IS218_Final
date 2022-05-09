@@ -12,7 +12,7 @@ from flask_bootstrap import Bootstrap5
 from flask_wtf.csrf import CSRFProtect
 
 from app.auth import auth
-from app.transactions import transactions
+from app.transactions import transactions_blueprint
 from app.cli import create_database
 from app.context_processors import utility_text_processors
 from app.db import db

@@ -1,8 +1,8 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash
 
-transactions = Blueprint('transactions', __name__, template_folder='templates')
+transactions_blueprint = Blueprint('transactions', __name__, template_folder='templates')
 from flask import current_app
 
 @transactions.route('/transactions')
-def transactions():
+def transaction():
     return render_template('transactions.html')
