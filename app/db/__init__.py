@@ -20,3 +20,4 @@ def create_db_file():
         os.mkdir(dbDirectory)
     db.create_all()
     db.session.commit()
+

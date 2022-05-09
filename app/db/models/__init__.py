@@ -63,11 +63,3 @@ class Transactions(db.Model):
     def __init__(self, amount, type):
         self.type = type
         self.amount = amount
-db.create_all()
-db.session.commit()
-
-admin = User('admin', 'admin@example.com')
-guest = User('guest', 'guest@example.com')
-db.session.add(admin)
-db.session.add(guest)
-db.session.commit()
