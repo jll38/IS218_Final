@@ -1,3 +1,4 @@
+import tests
 from app import db, create_app
 from app.db.models import User
 from app.auth.forms import register_form
@@ -6,7 +7,7 @@ from flask_login import logout_user, login_user
 from flask import current_app
 
 
-@pytest.fixture(scope="session")
+@tests.fixture(scope="session")
 def app():
     app = create_app()
     return app
