@@ -21,16 +21,10 @@ def test_dashboard_deny(client):
     response = client.get("/dashboard")
     assert response.status_code == 302
 
-@pytest.fixture(scope='module')
 def test_dashboard_accept(client):
     """test dashboard access when logged in"""
-    app = create_app()
-    with app.app_context():
-        user = User.query.first()
-        user.authenticated = True
-        db.session.add(user)
-        db.session.commit()
-        login_user(user)
+    with client:
+        client.post('/login', data=dict(email='johncena@gmail.com',password='Password'))
         response = client.get('/dashboard')
         assert response == 200
 
