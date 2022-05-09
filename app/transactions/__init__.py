@@ -23,7 +23,7 @@ def transaction():
         return redirect(url_for('auth.login'))
     return render_template('transactions.html')
 
-@transactions_blueprint.route('/transactions/upload')
+@transactions_blueprint.route('/transactions/upload', methods=['POST'])
 def upload():
     if not current_user.is_authenticated:
         return redirect(url_for('auth.login'))
