@@ -12,7 +12,7 @@ from flask_bootstrap import Bootstrap5
 from flask_wtf.csrf import CSRFProtect
 
 from app.auth import auth
-from app.auth import auth
+from app.transactions import transactions
 from app.cli import create_database
 from app.context_processors import utility_text_processors
 from app.db import db
@@ -50,6 +50,7 @@ def create_app():
     bootstrap = Bootstrap5(app)
     app.register_blueprint(simple_pages)
     app.register_blueprint(auth)
+    app.register_blueprint(transactions)
     app.context_processor(utility_text_processors)
     app.config['BOOTSTRAP_BOOTSWATCH_THEME'] = 'Simplex'
     app.register_error_handler(404, page_not_found)
@@ -102,7 +103,7 @@ def create_app():
 
 
         now = time.time()
-        # duration = round(now - g.start, 2)
+        duration = round(now - g.start, 2)
         dt = datetime.datetime.fromtimestamp(now)
         timestamp = rfc3339(dt, utc=True)
 
@@ -114,7 +115,7 @@ def create_app():
             ('method', request.method),
             ('path', request.path),
             ('status', response.status_code),
-            # ('duration', duration),
+            ('duration', duration),
             ('time', timestamp),
             ('ip', ip),
             ('host', host),
