@@ -23,7 +23,9 @@
 11. Test Page Not Found (404 Error)
 12. Dashboard Deny
 13. Dashboard Accept (In Progress)
-14. Register (In Progress)
+14. Transaction Page Deny
+15. Transaction Upload Page Deny
+16. Register (In Progress)
 
 #### To-do
 1. Login functionality
