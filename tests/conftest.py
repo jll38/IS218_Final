@@ -2,7 +2,7 @@
 # pylint: disable=redefined-outer-name
 
 import pytest
-from app import create_app
+from app import create_app, db
 
 
 @pytest.fixture()
@@ -13,6 +13,11 @@ def application():
         "TESTING": True,
     })
     yield application
+
+    with application.app_context():
+        db.create_all()
+        yield application
+        db.session.remove()
 
 class authMethods:
     def __init__(self, client):
