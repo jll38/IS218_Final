@@ -4,7 +4,7 @@
     {% from 'bootstrap5/form.html' import render_form, render_field, render_form_row %}
     <div id="row">
     <h2>Upload your transactions</h2>
-    <p>{{ current_user.email }}'s Transactions: </p>
+    {{ render_form(form) }}
 
     </div>
 {% endblock %}
