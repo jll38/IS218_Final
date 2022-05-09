@@ -29,6 +29,15 @@ def login():
             return redirect(url_for('auth.dashboard'))
     return render_template('login.html', form=form)
 
+def login_given_user(user):
+    if (current_user.is_authenticated):
+        return redirect(url_for('auth.dashboard'))
+    user.authenticated = True
+    db.session.add(user)
+    db.session.commit()
+    login_user(user)
+
+
 @auth.route('/register', methods=['POST', 'GET'])
 def register():
     if current_user.is_authenticated:
