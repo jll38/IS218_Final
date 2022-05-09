@@ -13,6 +13,7 @@ class Config(object):
     UPLOAD_FOLDER = os.getenv('UPLOAD_FOLDER', os.path.join(BASE_DIR, 'static/uploads'))
     LOG_DIR = os.path.join(BASE_DIR, '../logs')
 
+
 class Production(Config):
     pass
 

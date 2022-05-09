@@ -1,9 +1,8 @@
 import os
 from distutils import config
-
 from flask import Blueprint, cli
 from flask_sqlalchemy import SQLAlchemy
-
+from app.db.models import User, Transactions
 db = SQLAlchemy()
 
 database = Blueprint('database', __name__,)

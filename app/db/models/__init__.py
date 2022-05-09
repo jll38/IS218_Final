@@ -1,10 +1,12 @@
 from datetime import datetime
-
+from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import relationship
 from werkzeug.security import check_password_hash, generate_password_hash
-from app.db import db
 from flask_login import UserMixin
 
+app = Flask(__name__)
+db = SQLAlchemy(app)
 
 class User(UserMixin, db.Model):
     __tablename__ = 'users'
@@ -61,3 +63,4 @@ class Transactions(db.Model):
     def __init__(self, amount, type):
         self.type = type
         self.amount = amount
+db.create_all()

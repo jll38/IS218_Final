@@ -18,6 +18,7 @@ from app.context_processors import utility_text_processors
 from app.db import db
 from app.db.models import User, Transactions
 from app.simple_pages import simple_pages
+from config import Config
 import logging
 from flask.logging import default_handler
 
@@ -43,6 +44,7 @@ class RequestFormatter(logging.Formatter):
 def create_app():
     """Create and configure an instance of the Flask application."""
     app = Flask(__name__)
+
     if os.environ.get("FLASK_ENV") == "production":
         app.config.from_object("app.config.Production")
     elif os.environ.get("FLASK_ENV") == "development":
@@ -152,3 +154,4 @@ def user_loader(user_id):
         return User.query.get(int(user_id))
     except:
         return None
+
