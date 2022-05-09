@@ -1,4 +1,5 @@
 import tests
+import pytest
 from app import db, create_app
 from app.db.models import User
 from app.auth.forms import register_form
@@ -20,6 +21,7 @@ def test_dashboard_deny(client):
     response = client.get("/dashboard")
     assert response.status_code == 302
 
+@pytest.fixture(scope='session')
 def test_dashboard_accept(client):
     """test dashboard access when logged in"""
     app = create_app()
