@@ -16,7 +16,7 @@ from app.transactions import transactions_blueprint
 from app.cli import create_database
 from app.context_processors import utility_text_processors
 from app.db import db
-from app.db.models import User
+from app.db.models import User, Transactions
 from app.simple_pages import simple_pages
 import logging
 from flask.logging import default_handler
@@ -65,6 +65,7 @@ def create_app():
     app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///" + os.path.abspath(db_dir)
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
     db.init_app(app)
+
     # add command function to cli commands
     app.cli.add_command(create_database)
 
