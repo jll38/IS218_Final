@@ -7,7 +7,6 @@ from flask_login import logout_user, login_user
 from flask import current_app
 
 
-@tests.fixture(scope="session")
 def app():
     app = create_app()
     return app
