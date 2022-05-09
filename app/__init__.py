@@ -18,7 +18,6 @@ from app.context_processors import utility_text_processors
 from app.db import db
 from app.db.models import User, Transactions
 from app.simple_pages import simple_pages
-from config import Config
 import logging
 from flask.logging import default_handler
 
