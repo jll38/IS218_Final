@@ -12,7 +12,6 @@ def application():
     application.config.update({
         "TESTING": True,
     })
-    yield application
 
     with application.app_context():
         db.create_all()
