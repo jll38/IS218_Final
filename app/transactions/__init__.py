@@ -5,4 +5,4 @@ from flask import current_app
 
 @transactions.route('/transactions')
 def transactions():
-    return render_template()
+    return render_template('transactions.html')
