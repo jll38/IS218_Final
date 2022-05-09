@@ -1,5 +1,6 @@
 import csv
 import os
+from os.path import join, dirname, realpath
 
 from flask import Blueprint, render_template, request, redirect, url_for, flash, abort
 from jinja2 import TemplateNotFound
@@ -23,7 +24,7 @@ def transaction():
         return redirect(url_for('auth.login'))
     return render_template('transactions.html')
 
-@transactions_blueprint.route('/transactions/upload', methods=['POST'])
+@transactions_blueprint.route('/transactions/upload', methods=['POST', 'GET'])
 def upload():
     if not current_user.is_authenticated:
         return redirect(url_for('auth.login'))
@@ -39,7 +40,7 @@ def upload():
                 transactions.append(Transactions(row['AMOUNT'], row['TYPE']))
         current_user.transactions = transactions + current_user.transactions
         db.session.commit()
-        return redirect(url_for('transactions.transaction   '))
+        return redirect(url_for('transactions.transaction'))
     try:
         return render_template('upload.html', form=form)
     except TemplateNotFound:
