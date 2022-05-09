@@ -21,9 +21,9 @@ def test_dashboard_deny(client):
     response = client.get("/dashboard")
     assert response.status_code == 302
 
-def test_register(client, auth):
-    """register redirecting to login"""
-    response = auth.register()
-    assert response.headers["Location"] == "/login"
+# def test_register(client, auth):
+#     """register redirecting to login"""
+#     response = auth.register()
+#     assert response.headers["Location"] == "/login"
 
 
