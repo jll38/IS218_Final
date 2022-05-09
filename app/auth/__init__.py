@@ -1,3 +1,5 @@
+import logging
+
 from flask import Blueprint, render_template, request, redirect, url_for, flash
 from app.auth.decorators import admin_required
 from flask_login import login_user, login_required, logout_user, current_user
@@ -32,6 +34,8 @@ def login():
 
 @auth.route('/register', methods=['POST', 'GET'])
 def register():
+    log3 = logging.getLogger("Request")
+    log3.info("Request: Register")
     if current_user.is_authenticated:
         return redirect(url_for('auth.dashboard'))
     form = register_form()
@@ -45,7 +49,7 @@ def register():
                 user.is_admin = 1
                 db.session.add(user)
                 db.session.commit()
-            flash('You are now a registered user!', "success")
+            flash('Congratulations, you are now a registered user!', "success")
             return redirect(url_for('auth.login'), 302)
         else:
             flash('Already Registered')
