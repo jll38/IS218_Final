@@ -11,7 +11,7 @@
 
 I can't fathom why this project is not working.
 The database refuses to create the tables
-despite the numberous times db.create_all() is called
+despite the numerous times db.create_all() is called
 and no matter what I do it just won't work.
 I can't complete the rest of the project without this.
 #### Unit Tests
