@@ -2,10 +2,10 @@ import os
 from distutils import config
 from flask import Blueprint, cli
 from flask_sqlalchemy import SQLAlchemy
-from app.db.models import User, Transactions
+from app import db, User, Transactions
 db = SQLAlchemy()
 
-database = Blueprint('database', __name__,)
+database = Blueprint('database', __name__)
 
 @database.cli.command('create')
 def init_db():
@@ -20,4 +20,6 @@ def create_db_file():
         os.mkdir(dbDirectory)
     db.create_all()
     db.session.commit()
+
+
 

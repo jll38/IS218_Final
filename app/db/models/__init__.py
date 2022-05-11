@@ -2,6 +2,7 @@ from datetime import datetime
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import relationship
+from sqlalchemy_serializer import SerializerMixin
 from werkzeug.security import check_password_hash, generate_password_hash
 from flask_login import UserMixin
 
@@ -49,17 +50,17 @@ class User(UserMixin, db.Model):
     def __repr__(self):
         return '<User %r>' % self.email
 
-class Transactions(db.Model):
+class Transactions(db.Model,SerializerMixin):
     __tablename__ = 'transactions'
     id = db.Column(db.Integer, primary_key=True)
-    type = db.Column(db.String(300), nullable=True, unique=False)
-    amount = db.Column(db.String(300), nullable=True, unique=False)
+    type = db.Column(db.String(10), nullable=True, unique=False)
+    amount = db.Column(db.Integer)
+    total = db.Column(db.Integer)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     user = relationship("User", back_populates="transactions", uselist=False)
 
-    def get_id(self):
-        return self.id
-
-    def __init__(self, amount, type):
-        self.type = type
+    def __init__(self, amount, type, user_id, total):
         self.amount = amount
+        self.type = type
+        self.user_id = user_id
+        self.total = total

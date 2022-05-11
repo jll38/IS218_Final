@@ -9,6 +9,11 @@
 
 * [Developmental Deployment](https://jll38-IS218-final-dev.herokuapp.com/)
 
+I can't fathom why this project is not working.
+The database refuses to create the tables
+despite the numberous times db.create_all() is called
+and no matter what I do it just won't work.
+I can't complete the rest of the project without this.
 #### Unit Tests
 1. Main Menu Link Test
 2. Homepage Test
