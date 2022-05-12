@@ -9,11 +9,7 @@
 
 * [Developmental Deployment](https://jll38-IS218-final-dev.herokuapp.com/)
 
-I can't fathom why this project is not working.
-The database refuses to create the tables
-despite the numerous times db.create_all() was called
-and no matter what I do it just won't work.
-I can't complete the rest of the project without this.
+
 #### Unit Tests
 1. Main Menu Link Test
 2. Homepage Test
@@ -31,7 +27,3 @@ I can't complete the rest of the project without this.
 14. Transaction Page Deny
 15. Transaction Upload Page Deny
 16. Register (In Progress)
-
-#### To-do
-1. Registration and Login Tests
-2. CSV Upload
