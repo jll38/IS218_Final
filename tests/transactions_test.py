@@ -1,3 +1,7 @@
+from app import db
+from app.db import db
+from app.db.models import User, Transactions
+
 def test_transactions_deny(client):
     """test transactions access when not logged in"""
     response = client.get("/transactions")

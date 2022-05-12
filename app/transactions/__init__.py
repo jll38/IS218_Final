@@ -22,6 +22,8 @@ from flask import current_app
 @transactions_blueprint.route('/transactions', methods=['GET'], defaults={"page": 1})
 @transactions_blueprint.route('/transactions/<int:page>', methods=['GET'])
 def transaction(page):
+    if not current_user.is_authenticated:
+        return redirect(url_for('auth.login'))
     page = page
     per_page = 1000
     pagination = Transactions.query.paginate(page, per_page, error_out=False)
@@ -34,6 +36,8 @@ def transaction(page):
 
 @transactions_blueprint.route('/transactions/upload', methods=['POST', 'GET'])
 def upload():
+    if not current_user.is_authenticated:
+        return redirect(url_for('auth.login'))
     log = logging.getLogger("myApp")
     log.info("Uploading CSV File")
     if not current_user.is_authenticated:
