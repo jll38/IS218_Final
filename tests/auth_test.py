@@ -24,8 +24,6 @@ def test_dashboard_accept(application, client):
     """test dashboard access when logged in"""
     application.test_client_class = FlaskLoginClient
     user = User.query.get(1)
-
-    assert db.session.query(User).count == 1
     assert user.email == 'johncena@gmail.com'
 
     with application.test_client_class(user=user) as client:
