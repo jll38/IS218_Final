@@ -5,3 +5,7 @@ from wtforms.fields import *
 class csv_upload(FlaskForm):
     file = FileField()
     submit = SubmitField()
+
+class clear_table(FlaskForm):
+    file = FileField()
+    submit = SubmitField()

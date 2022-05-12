@@ -5,7 +5,7 @@ from os.path import join, dirname, realpath
 from flask import Blueprint, render_template, request, redirect, url_for, flash, abort
 from jinja2 import TemplateNotFound
 from werkzeug.utils import secure_filename
-
+from sqlalchemy import delete
 from app.auth.decorators import admin_required
 from flask_login import login_user, login_required, logout_user, current_user
 from werkzeug.security import generate_password_hash
@@ -13,7 +13,7 @@ from app.auth.forms import login_form, register_form
 from app.db import db
 from app.db.models import User, Transactions
 from flask import Blueprint, render_template, request, redirect, url_for, flash
-from app.transactions.forms import csv_upload
+from app.transactions.forms import csv_upload, clear_table
 
 transactions_blueprint = Blueprint('transactions', __name__, template_folder='templates')
 from flask import current_app
