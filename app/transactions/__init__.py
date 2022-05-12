@@ -1,4 +1,5 @@
 import csv
+import logging
 import os
 from os.path import join, dirname, realpath
 
@@ -33,6 +34,8 @@ def transaction(page):
 
 @transactions_blueprint.route('/transactions/upload', methods=['POST', 'GET'])
 def upload():
+    log = logging.getLogger("myApp")
+    log.info("Uploading CSV File")
     if not current_user.is_authenticated:
         return redirect(url_for('auth.login'))
     form = csv_upload()
@@ -42,6 +45,7 @@ def upload():
         form.file.data.save(filepath)
         transactions = []
         total = 0
+        log.info("File Name: " + filename)
         with open(filepath, encoding='utf-8-sig') as file:
             csv_file = csv.DictReader(file)
             for row in csv_file:
