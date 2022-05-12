@@ -13,7 +13,7 @@ def test_testing_config(application):
 
 def test_production_config(application):
     """test production config"""
-    application.config.from_object('app.config.ProductionConfig')
+    application.config.from_object('app.config.Production')
 
     assert not application.config['DEBUG']
     assert not application.config['TESTING']
