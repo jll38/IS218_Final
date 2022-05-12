@@ -1,7 +1,7 @@
 import os
 
 
-def test_create_database():
+def test_database_exists():
     """test database"""
     root = os.path.dirname(os.path.abspath(__file__))
     dbdir = os.path.join(root, '../database')

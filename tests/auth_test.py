@@ -21,10 +21,10 @@ def test_dashboard_deny(client):
     response = client.get("/dashboard")
     assert response.status_code == 302
 
-def test_dashboard_access(client):
-    response = client.post("/login", data=dict(username="johncena@gmail.com", password="password"))
-    assert current_user is not None
-    assert response.status_code == 302
+# def test_dashboard_access(client):
+#     response = client.post("/login", data=dict(username="johncena@gmail.com", password="password"))
+#     assert current_user is not None
+#     assert response.status_code == 302
 
 
 # def test_register(client, auth):
