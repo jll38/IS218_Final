@@ -15,8 +15,5 @@ def test_production_config(application):
     """test production config"""
     application.config.from_object('app.config.ProductionConfig')
 
-    log.info("inside test_config / test production config")
-    log.info(application.config['SQLALCHEMY_DATABASE_URI'])
-
     assert not application.config['DEBUG']
     assert not application.config['TESTING']
