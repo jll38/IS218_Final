@@ -1,5 +1,5 @@
 from flask import Flask
-from flask_login import FlaskLoginClient
+from flask_login import FlaskLoginClient, current_user
 import tests
 import pytest
 from app import db, create_app
@@ -20,15 +20,12 @@ def test_dashboard_deny(client):
     """test dashboard access when not logged in"""
     response = client.get("/dashboard")
     assert response.status_code == 302
-def test_dashboard_accept(application, client):
-    """test dashboard access when logged in"""
-    application.test_client_class = FlaskLoginClient
-    user = User.query.get(1)
-    assert user.email == 'johncena@gmail.com'
 
-    with application.test_client_class(user=user) as client:
-        response = client.get('/dashboard')
-        assert response.status_code == 200
+def test_dashboard_access(client):
+    response = client.post("/login", data=dict(username="johncena@gmail.com", password="password"))
+    assert current_user is not None
+    assert response.status_code == 302
+
 
 # def test_register(client, auth):
 #     """register redirecting to login"""
