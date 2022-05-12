@@ -33,7 +33,7 @@ def transaction(page):
         return render_template('transactions.html',data=data,pagination=pagination)
     except TemplateNotFound:
         abort(404)
-
+#t
 @transactions_blueprint.route('/transactions/upload', methods=['POST', 'GET'])
 def upload():
     if not current_user.is_authenticated:
