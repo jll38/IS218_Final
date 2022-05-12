@@ -14,6 +14,7 @@ from flask import current_app
 
 @auth.route('/login', methods=['POST', 'GET'])
 def login():
+    log = logging.getLogger("myApp")
     form = login_form()
     if(current_user.is_authenticated):
         return redirect(url_for('auth.dashboard'))
@@ -28,6 +29,7 @@ def login():
             db.session.commit()
             login_user(user)
             flash('Welcome','success')
+            log.info("Logging in user: " + user.email)
             return redirect(url_for('auth.dashboard'))
     return render_template('login.html', form=form)
 
