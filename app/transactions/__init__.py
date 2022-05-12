@@ -18,11 +18,18 @@ from app.transactions.forms import csv_upload
 transactions_blueprint = Blueprint('transactions', __name__, template_folder='templates')
 from flask import current_app
 
-@transactions_blueprint.route('/transactions')
-def transaction():
-    if not current_user.is_authenticated:
-        return redirect(url_for('auth.login'))
-    return render_template('transactions.html')
+@transactions_blueprint.route('/transactions', methods=['GET'], defaults={"page": 1})
+@transactions_blueprint.route('/transactions/<int:page>', methods=['GET'])
+def transaction(page):
+    page = page
+    per_page = 1000
+    pagination = Transactions.query.paginate(page, per_page, error_out=False)
+    data = pagination.items
+
+    try:
+        return render_template('transactions.html',data=data,pagination=pagination)
+    except TemplateNotFound:
+        abort(404)
 
 @transactions_blueprint.route('/transactions/upload', methods=['POST', 'GET'])
 def upload():
@@ -34,11 +41,13 @@ def upload():
         filepath = os.path.join(current_app.config['UPLOAD_FOLDER'], filename)
         form.file.data.save(filepath)
         transactions = []
+        total = 0
         with open(filepath, encoding='utf-8-sig') as file:
             csv_file = csv.DictReader(file)
             for row in csv_file:
-                transactions.append(Transactions(row['AMOUNT'], row['TYPE']))
-        current_user.transactions = transactions + current_user.transactions
+                total = int(row['AMOUNT']) + total
+                transactions.append(Transactions(row['AMOUNT'], row['TYPE'], current_user.get_id(), total ))
+        current_user.transaction = transactions + current_user.transaction
         db.session.commit()
         return redirect(url_for('transactions.transaction'))
     try:

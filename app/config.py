@@ -8,7 +8,7 @@ class Config(object):
     DB_DIR = os.getenv('DB_DIR','database')
     SQLALCHEMY_DATABASE_URI = "sqlite:///" + os.path.join(BASE_DIR,'..', DB_DIR, "db.sqlite")
     SQLALCHEMY_TRACK_MODIFICATIONS = False
-    UPLOAD_FOLDER = os.getenv('UPLOAD_FOLDER', os.path.join(BASE_DIR, 'static/uploads'))
+    UPLOAD_FOLDER =  os.getenv('UPLOAD_FOLDER', os.path.join(BASE_DIR, 'static/uploads'))
     LOG_DIR = os.path.join(BASE_DIR, '../logs')
 
 
